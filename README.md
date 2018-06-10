@@ -36,5 +36,8 @@ to do
 8. area
 9. system setting
 
+(yii2.0.15)[https://github.com/blacksmoke26/yii2-manual-chm/releases]
+
+
 
 
