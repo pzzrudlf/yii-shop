@@ -1,0 +1,51 @@
+{
+    "name": "yiishop",
+    "description": "Yii2 Shop",
+    "keywords": [
+        "yii2",
+        "framework",
+        "shop",
+        "b2c"
+    ],
+    "homepage": "http://github.com/pzzrudlf/yiishop.git",
+    "type": "project",
+    "license": "MIT",
+    "author": "pzzrudlf@gmail.com",
+    "support": {
+        "issues": "https://github.com/pzzrudlf/yiishop/issues?state=open",
+        "wiki": "https://github.com/pzzrudlf/yiishop/wiki",
+        "source": "https://github.com/pzzrudlf/yiishop"
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "~2.0.6",
+        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
+        "dmstr/yii2-adminlte-asset": "^2.5",
+        "mdmsoft/yii2-admin": "2.x-dev"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "~2.0.0",
+        "yiisoft/yii2-gii": "~2.0.0",
+        "yiisoft/yii2-faker": "~2.0.0",
+        "codeception/base": "^2.2.3",
+        "codeception/verify": "~0.3.1"
+    },
+    "config": {
+        "process-timeout": 1800,
+        "fxp-asset": {
+            "enabled": false
+        }
+    },
+    "repositories": {
+        "0": {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
+}
