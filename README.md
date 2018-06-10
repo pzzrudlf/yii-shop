@@ -6,8 +6,6 @@
     
     SKU：土豪金 16G 苹果6 （商品的不可再分的最小单元）。
 
-
-@author pzzrudlf <pzzrudlf@gmail.com>
 ```php
 composer config repo.packagist composer https://packagist.phpcomposer.com
 
