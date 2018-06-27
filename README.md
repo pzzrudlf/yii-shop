@@ -21,10 +21,10 @@ php yii serve -p 5000 -t @backend/web
 
 php yii serve -p 5001 -t @frontend/web
 ```
-# to do
-1. rbac 
-2. menu
-3. admin
+# 本项目还在开发中
+1. admin 
+2. rbac
+3. menu
 4. goods
 5. article
 6. pay
