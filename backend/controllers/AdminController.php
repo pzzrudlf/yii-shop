@@ -8,6 +8,7 @@ use backend\models\AdminSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\components\AccessControl;
+use backend\models\forms\AdminSignupForm;
 
 /**
  * AdminController implements the CRUD actions for Admin model.
@@ -67,10 +68,10 @@ class AdminController extends AdminBaseController
      */
     public function actionCreate()
     {
-        $model = new Admin();
+        $model = new AdminSignupForm();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) && $model->create()) {
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [

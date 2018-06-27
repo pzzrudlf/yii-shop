@@ -8,10 +8,11 @@
 
 namespace backend\controllers;
 
+use yii\web\Controller;
 use common\controllers\BaseController;
 use backend\components\AccessControl;
 
-class AdminBaseController extends BaseController
+class AdminBaseController extends Controller
 {
     public function behaviors()
     {
