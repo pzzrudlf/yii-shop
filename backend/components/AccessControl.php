@@ -29,7 +29,7 @@ class AccessControl extends \yii\base\ActionFilter
 
     public function beforeAction($action)
     {
-//        return true;
+        return true;
         $actionId = $action->getUniqueId();
         $user = $this->getUser();
         if(Helper::checkRoute('/'.$actionId, Yii::$app->getRequest()->get(), $user)) {

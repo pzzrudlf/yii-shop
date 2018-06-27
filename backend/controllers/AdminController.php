@@ -21,9 +21,6 @@ class AdminController extends AdminBaseController
     public function behaviors()
     {
         return [
-            'as access' => [
-                'class' => AccessControl::class,
-            ],
             'verbs' => [
                 'class' => VerbFilter::class,
                 'actions' => [

@@ -7,7 +7,6 @@ use common\models\ArticleCategory;
 use common\models\ArticleCategorySearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use backend\components\AccessControl;
 
 /**
  * ArticleCategoryController implements the CRUD actions for ArticleCategory model.
@@ -20,9 +19,6 @@ class ArticleCategoryController extends AdminBaseController
     public function behaviors()
     {
         return [
-            'as access' => [
-                'class' => AccessControl::class,
-            ],
             'verbs' => [
                 'class' => VerbFilter::class,
                 'actions' => [
