@@ -52,6 +52,10 @@ return [
                 ]
             ]
         ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            'defaultRoles' => ['guest'],
+        ],
 //        'view' => [
 //            'theme' => [
 //                'pathMap' => [
@@ -65,6 +69,17 @@ return [
         'demo' => [
             'class' => 'backend\modules\demo\Module',
         ],
+    ],
+    'aliases' => [
+
+    ],
+    'as access' => [
+        'class' => 'backend\components\AccessControl',
+        'allowActions' => [
+            //这里是允许访问的action，不受权限控制
+            //controller/action
+//            '*'
+        ]
     ],
     'params' => $params,
 ];
