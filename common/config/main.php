@@ -12,6 +12,9 @@ return [
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
         ],
+        'helper' => [
+            'class' => 'common\components\Helper',
+        ],
     ],
     'language' => 'zh-CN',
     'timeZone' => 'Asia/Shanghai',

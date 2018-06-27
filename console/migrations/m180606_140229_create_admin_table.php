@@ -24,7 +24,7 @@ class m180606_140229_create_admin_table extends Migration
 
             'auth_key' => $this->string(32)->notNull()->comment('auth_key'),
             'password_hash' => $this->string()->notNull()->comment('密码哈希值'),
-            'password_reset_token' => $this->string()->unique()->comment('密码重置口令'),
+//            'password_reset_token' => $this->string()->unique()->comment('密码重置口令'),
 
             'email' => $this->string()->notNull()->unique()->comment('邮件'),
 

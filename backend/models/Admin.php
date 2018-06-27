@@ -15,7 +15,6 @@ use yii\web\IdentityInterface;
  * @property string $username 用户名
  * @property string $auth_key auth_key
  * @property string $password_hash 密码哈希值
- * @property string $password_reset_token 密码重置口令
  * @property string $email 邮件
  * @property int $created_at 创建时间
  * @property int $updated_at 更新时间
@@ -55,11 +54,10 @@ class Admin extends ActiveRecord implements IdentityInterface
     {
         return [
             [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at'], 'required'],
-            [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
+            [['username', 'password_hash', 'email'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['username'], 'unique'],
             [['email'], 'unique'],
-            [['password_reset_token'], 'unique'],
         ];
     }
 
@@ -73,7 +71,6 @@ class Admin extends ActiveRecord implements IdentityInterface
             'username' => '用户名',
             'auth_key' => 'Auth Key',
             'password_hash' => 'Password Hash',
-            'password_reset_token' => 'Password Reset Token',
             'email' => '邮箱',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
@@ -113,16 +110,16 @@ class Admin extends ActiveRecord implements IdentityInterface
      * @param string $token password reset token
      * @return static|null
      */
-    public static function findByPasswordResetToken($token)
-    {
-        if (!static::isPasswordResetTokenValid($token)) {
-            return null;
-        }
-
-        return static::findOne([
-            'password_reset_token' => $token,
-        ]);
-    }
+//    public static function findByPasswordResetToken($token)
+//    {
+//        if (!static::isPasswordResetTokenValid($token)) {
+//            return null;
+//        }
+//
+//        return static::findOne([
+//            'password_reset_token' => $token,
+//        ]);
+//    }
 
     /**
      * Finds out if password reset token is valid
@@ -130,16 +127,16 @@ class Admin extends ActiveRecord implements IdentityInterface
      * @param string $token password reset token
      * @return bool
      */
-    public static function isPasswordResetTokenValid($token)
-    {
-        if (empty($token)) {
-            return false;
-        }
-
-        $timestamp = (int) substr($token, strrpos($token, '_') + 1);
-        $expire = Yii::$app->params['user.passwordResetTokenExpire'];
-        return $timestamp + $expire >= time();
-    }
+//    public static function isPasswordResetTokenValid($token)
+//    {
+//        if (empty($token)) {
+//            return false;
+//        }
+//
+//        $timestamp = (int) substr($token, strrpos($token, '_') + 1);
+//        $expire = Yii::$app->params['user.passwordResetTokenExpire'];
+//        return $timestamp + $expire >= time();
+//    }
 
     /**
      * {@inheritdoc}
@@ -197,16 +194,16 @@ class Admin extends ActiveRecord implements IdentityInterface
     /**
      * Generates new password reset token
      */
-    public function generatePasswordResetToken()
-    {
-        $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
-    }
+//    public function generatePasswordResetToken()
+//    {
+//        $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
+//    }
 
     /**
      * Removes password reset token
      */
-    public function removePasswordResetToken()
-    {
-        $this->password_reset_token = null;
-    }
+//    public function removePasswordResetToken()
+//    {
+//        $this->password_reset_token = null;
+//    }
 }
