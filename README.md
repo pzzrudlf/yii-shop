@@ -16,16 +16,12 @@ php init
 php yii migrate
 
 php yii init/admin
+
+php yii serve -p 5000 -t @backend/web
+
+php yii serve -p 5001 -t @frontend/web
 ```
-goods
---
-goods_spec
---
-goods_attr
---
-goods_attr_value
---
-to do
+# to do
 1. rbac 
 2. menu
 3. admin
