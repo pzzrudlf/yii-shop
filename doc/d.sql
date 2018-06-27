@@ -1,41 +1,4 @@
-﻿DROP TABLE IF EXISTS `yii_article_comment`;
-CREATE TABLE `yii_article_comment` (
-  `id` int(11) NOT NULL DEFAULT '0',
-  `article_id` int(11) NOT NULL DEFAULT '0' COMMENT '文章id',
-  `article_type` varchar(255) DEFAULT NULL COMMENT '文章类型',
-  `content` varchar(255) DEFAULT NULL COMMENT '评论内容',
-  `from_uid` int(11) DEFAULT NULL COMMENT '评论人的id',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='文章评论表';
-
-DROP TABLE IF EXISTS `yii_article_comment_reply`;
-CREATE TABLE `yii_article_comment_reply` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `comment_id` varchar(255) DEFAULT NULL COMMENT '评论id',
-  `reply_id` varchar(255) DEFAULT NULL COMMENT '回复目标id',
-  `reply_type` varchar(255) DEFAULT NULL COMMENT '回复类型',
-  `content` varchar(255) DEFAULT NULL COMMENT '回复内容',
-  `from_uid` varchar(255) DEFAULT NULL COMMENT '回复人id',
-  `to_uid` varchar(255) DEFAULT NULL COMMENT '评论人id',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='评论的回复表';
-
-DROP TABLE IF EXISTS `yii_brand`;
-CREATE TABLE `yii_brand` (
-  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '品牌表',
-  `name` varchar(60) NOT NULL DEFAULT '' COMMENT '品牌名称',
-  `logo` varchar(80) NOT NULL DEFAULT '' COMMENT '品牌logo',
-  `desc` text NOT NULL COMMENT '品牌描述',
-  `url` varchar(255) NOT NULL DEFAULT '' COMMENT '品牌地址',
-  `sort` int(3) unsigned NOT NULL DEFAULT '50' COMMENT '排序',
-  `cat_name` varchar(128) DEFAULT '' COMMENT '品牌分类',
-  `parent_cat_id` int(11) DEFAULT '0' COMMENT '分类id',
-  `cat_id` int(10) DEFAULT '0' COMMENT '分类id',
-  `is_hot` tinyint(1) DEFAULT '0' COMMENT '是否推荐',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='品牌表';
-
-DROP TABLE IF EXISTS `yii_goods`;
+﻿DROP TABLE IF EXISTS `yii_goods`;
 CREATE TABLE `yii_goods` (
   `goods_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '商品id',
   `cat_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '分类id',
@@ -118,66 +81,6 @@ CREATE TABLE `yii_goods_attribute` (
   KEY `cat_id` (`type_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='商品模型属性表(生产日期等)';
 
-DROP TABLE IF EXISTS `yii_goods_category`;
-CREATE TABLE `yii_goods_category` (
-  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '商品分类id',
-  `name` varchar(90) NOT NULL DEFAULT '' COMMENT '商品分类名称',
-  `mobile_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT '' COMMENT '手机端显示的商品分类名',
-  `parent_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '父id',
-  `parent_id_path` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT '' COMMENT '家族图谱',
-  `level` tinyint(1) DEFAULT '0' COMMENT '等级',
-  `sort_order` tinyint(1) unsigned NOT NULL DEFAULT '50' COMMENT '顺序排序',
-  `is_show` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否显示',
-  `image` varchar(512) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT '' COMMENT '分类图片',
-  `is_hot` tinyint(1) DEFAULT '0' COMMENT '是否推荐为热门分类',
-  `cat_group` tinyint(1) DEFAULT '0' COMMENT '分类分组默认0',
-  `commission_rate` tinyint(1) DEFAULT '0' COMMENT '分佣比例',
-  PRIMARY KEY (`id`),
-  KEY `parent_id` (`parent_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=848 DEFAULT CHARSET=utf8 COMMENT='商品分类表';
-
-DROP TABLE IF EXISTS `yii_goods_comment`;
-CREATE TABLE `yii_goods_comment` (
-  `comment_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '评论id',
-  `goods_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '商品id',
-  `email` varchar(60) NOT NULL DEFAULT '' COMMENT 'email邮箱',
-  `username` varchar(60) NOT NULL DEFAULT '' COMMENT '用户名',
-  `content` text NOT NULL COMMENT '评论内容',
-  `add_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '添加时间',
-  `ip_address` varchar(15) NOT NULL DEFAULT '' COMMENT 'ip地址',
-  `is_show` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否显示',
-  `parent_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '父id',
-  `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '评论用户',
-  `img` text COMMENT '晒单图片',
-  `order_id` mediumint(8) DEFAULT '0' COMMENT '订单id',
-  `deliver_rank` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '物流评价等级',
-  `goods_rank` tinyint(1) DEFAULT '0' COMMENT '商品评价等级',
-  `service_rank` tinyint(1) DEFAULT '0' COMMENT '商家服务态度评价等级',
-  `zan_num` int(10) NOT NULL DEFAULT '0' COMMENT '被赞数',
-  `zan_userid` varchar(255) NOT NULL DEFAULT '' COMMENT '点赞用户id',
-  `is_anonymous` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否匿名评价:0不是，1是',
-  `rec_id` int(11) DEFAULT NULL COMMENT '订单商品表ID',
-  PRIMARY KEY (`comment_id`),
-  KEY `parent_id` (`parent_id`),
-  KEY `id_value` (`goods_id`),
-  KEY `order_id` (`order_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='商品评论表';
-
-DROP TABLE IF EXISTS `yii_goods_consult`;
-CREATE TABLE `yii_goods_consult` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '商品咨询id',
-  `goods_id` int(11) DEFAULT '0' COMMENT '商品id',
-  `username` varchar(32) CHARACTER SET utf8 DEFAULT '' COMMENT '网名',
-  `add_time` int(11) DEFAULT '0' COMMENT '咨询时间',
-  `consult_type` tinyint(1) DEFAULT '1' COMMENT '1 商品咨询 2 支付咨询 3 配送 4 售后',
-  `content` varchar(1024) CHARACTER SET utf8 DEFAULT '' COMMENT '咨询内容',
-  `parent_id` int(11) DEFAULT '0' COMMENT '父id 用于管理员回复',
-  `is_show` tinyint(1) DEFAULT '0' COMMENT '是否显示',
-  `status` tinyint(1) DEFAULT '0' COMMENT '管理员回复状态，0未回复，1已回复',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='商品咨询表';
-
 DROP TABLE IF EXISTS `yii_goods_spec_detail`;
 CREATE TABLE `yii_goods_spec_detail` (
   `item_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '商品规格id',
@@ -202,20 +105,4 @@ CREATE TABLE `yii_goods_type` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='商品模型表';
 
-DROP TABLE IF EXISTS `yii_spec`;
-CREATE TABLE `yii_spec` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '规格表',
-  `type_id` int(11) DEFAULT '0' COMMENT '规格类型',
-  `name` varchar(55) DEFAULT NULL COMMENT '规格名称',
-  `order` int(11) DEFAULT '50' COMMENT '排序',
-  `search_index` tinyint(1) DEFAULT '1' COMMENT '是否需要检索：1是，0否',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='规格表';
 
-DROP TABLE IF EXISTS `yii_spec_item`;
-CREATE TABLE `yii_spec_item` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '规格项id',
-  `spec_id` int(11) DEFAULT NULL COMMENT '规格id',
-  `item` varchar(54) DEFAULT NULL COMMENT '规格项',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='规格项目表';
