@@ -9,7 +9,6 @@
 namespace backend\controllers;
 
 use yii\web\Controller;
-use common\controllers\BaseController;
 
 class AdminBaseController extends Controller
 {

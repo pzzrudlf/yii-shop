@@ -3,15 +3,13 @@ namespace backend\controllers;
 
 use Yii;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 use backend\models\forms\AdminLoginForm;
-use common\controllers\BaseController;
 use yii\web\Controller;
 
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends AdminBaseController
 {
     /**
      * {@inheritdoc}
@@ -19,20 +17,6 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::class,
-                'rules' => [
-                    [
-                        'actions' => ['login', 'error'],
-                        'allow' => true,
-                    ],
-                    [
-                        'actions' => ['logout', 'index'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
             'verbs' => [
                 'class' => VerbFilter::class,
                 'actions' => [

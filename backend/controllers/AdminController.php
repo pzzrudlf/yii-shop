@@ -7,7 +7,6 @@ use backend\models\Admin;
 use backend\models\AdminSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use backend\components\AccessControl;
 use backend\models\forms\AdminSignupForm;
 
 /**
