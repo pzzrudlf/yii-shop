@@ -27,10 +27,10 @@ php yii serve -p 5001 -t @frontend/web
 2. rbac
 3. menu
 4. goods
-5. article
-6. pay
+5. order
+6. address
 7. express
-8. area
+8. article
 9. system setting
 
 (yii2.0.15)[https://github.com/blacksmoke26/yii2-manual-chm/releases]
