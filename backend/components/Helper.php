@@ -15,7 +15,7 @@ class Helper
 {
     public static function checkRoute($route, $params = [], $user = null)
     {
-        $r = static::normalizeRoute($route);
+        $r = static::normalizeRoute($route, true);
 
         if ($user === null)
         {
@@ -39,7 +39,7 @@ class Helper
         return $user->can('/*', $params);
     }
 
-    protected static function normalizeRoute($route)
+    protected static function normalizeRoute($route, $advanced = false)
     {
         if ($route === '')
         {
@@ -60,6 +60,10 @@ class Helper
         else
         {
             $normalized = '/' . $route;
+        }
+
+        if($advanced) {
+            $normalized = '@'.Yii::$app->id.$normalized;
         }
 
         return $normalized;
