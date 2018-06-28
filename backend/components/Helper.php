@@ -13,7 +13,7 @@ use yii\web\User;
 
 class Helper
 {
-    public static function checkRoute($route, $params = [], $user)
+    public static function checkRoute($route, $params = [], $user = null)
     {
         $r = static::normalizeRoute($route);
 
